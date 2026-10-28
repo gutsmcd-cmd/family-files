@@ -20,9 +20,6 @@ jobs:
             cat b64/repo.part* | base64 -d > /tmp/repo.tgz
             echo "$(cat b64/sha256)  /tmp/repo.tgz" | sha256sum -c -
             tar -xzf /tmp/repo.tgz
-            mkdir -p best
-            while read sum f; do curl -sfL -A "Mozilla/5.0 (X11; Linux x86_64) Chrome/130 Safari/537.36" -o "$f" "https://zest-fire-bison-clear.grok.me/$f"; done < b64/fetch.sha
-            sha256sum -c b64/fetch.sha
             git rm -r -q b64
             git add -A && git commit -m "Unpack uploaded site files" && git push origin HEAD:main
           fi
