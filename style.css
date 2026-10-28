@@ -1,4 +1,4 @@
-:root{--bg:#fdf4f7;--ink:#2b2226;--mut:#6e5f66;--pink:#e2557f;--pinks:#fbe1ea;--green:#2f8f5b;--greens:#dff2e6;--card:#fff}
+:root{--bg:#fdf4f7;--ink:#2b2226;--mut:#6e5f66;--pink:#be3361;--pinks:#fbe1ea;--green:#277a4d;--greens:#dff2e6;--card:#fff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif}
 .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;max-width:900px;margin:auto;padding:22px 18px 6px}
 .top h1{margin:0;font-size:clamp(1.8rem,5vw,2.6rem);color:var(--pink)}.top p{margin:.3em 0;color:var(--mut)}
@@ -20,4 +20,8 @@ h3{font-size:1rem;margin:1.4em 0 .6em;color:var(--mut);font-weight:600}
 .lb{position:fixed;inset:0;z-index:5;background:#1b1418f2;display:flex;flex-direction:column;align-items:center;justify-content:center}.lb[hidden]{display:none}
 .lb img{max-width:94vw;max-height:calc(100vh - 140px);border-radius:10px}
 .lb .x,.lb .pv,.lb .nx{position:absolute;background:#fff3;color:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:1.8rem;cursor:pointer}.lb .x{top:14px;right:14px}.lb .pv{left:8px;top:50%}.lb .nx{right:8px;top:50%}
+:focus-visible{outline:3px solid var(--pink);outline-offset:2px}.lb :focus-visible{outline-color:#fff}
+.lb .pv,.lb .nx{transform:translateY(-50%)}.lb .dl{margin:14px 0 0}
+.pages a{flex:0 0 min(100%,420px);scroll-snap-align:start}.pages a img{width:100%}
+@media(max-width:500px){.lb .pv,.lb .nx{top:auto;bottom:20px;transform:none}.lb img{max-height:calc(100vh - 200px)}.jump a{padding:6px 10px}}
 footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}

@@ -10,14 +10,15 @@ forRie:"りえへ",pdfT:"コロとムギ",pdfP:"コロとムギについての2�
 forMat:"Matの写真",phT:"参考写真",phP:"写真をまとめたzipです。保存したら解凍してください。中の「best」フォルダが目的のものです。",saveZip:"⬇ 写真zipを保存",
 oneByOne:"または、ベスト12枚を1枚ずつ保存。写真をタップすると大きく見られます。",savePic:"⬇ この写真を保存",foot:"ファミリーファイル・Mat McDaniel・一度開けばオフラインでも見られます（写真zipを除く）"}};
 let L=localStorage.getItem("ff-lang")||((navigator.language||"").startsWith("ja")?"ja":"en");
-const g=document.getElementById("gal");g.innerHTML=P.map((p,i)=>`<button data-i="${i}"><img loading="lazy" src="best/${p}.webp" alt="${p}"><span>${p}.png</span></button>`).join("");
-function draw(){document.documentElement.lang=L;document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[L][e.dataset.t]);document.getElementById("lang").textContent=L==="en"?"日本語":"English";document.title=T[L].title;}
+const g=document.getElementById("gal");g.innerHTML=P.map((p,i)=>`<button data-i="${i}" aria-label="Photo ${p}"><img loading="lazy" src="best/${p}.webp" alt=""><span>${p}.png</span></button>`).join("");
+function draw(){document.documentElement.lang=L;document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[L][e.dataset.t]);document.getElementById("lang").textContent=L==="en"?"日本語":"English";document.getElementById("lang").lang=L==="en"?"ja":"en";document.title=T[L].title;}
 document.getElementById("lang").onclick=()=>{L=L==="en"?"ja":"en";localStorage.setItem("ff-lang",L);draw();if(!lb.hidden)show(cur)};
 const lb=document.getElementById("lb");let cur=0;
-function show(i){cur=(i+P.length)%P.length;lb.querySelector("img").src=`best/${P[cur]}.webp`;const d=lb.querySelector(".dl");d.href=`best/${P[cur]}.png`;d.textContent=`${T[L].savePic} (${P[cur]}.png)`;lb.hidden=false}
+function show(i){cur=(i+P.length)%P.length;const im=lb.querySelector("img");im.src=`best/${P[cur]}.webp`;im.alt=`Photo ${P[cur]} (${cur+1}/${P.length})`;const d=lb.querySelector(".dl");d.href=`best/${P[cur]}.png`;d.textContent=`${T[L].savePic} (${P[cur]}.png)`;if(lb.hidden){op=document.activeElement;lb.hidden=false;lb.querySelector(".x").focus()}}
+let op=null;function hide(){if(lb.hidden)return;lb.hidden=true;if(op)op.focus();op=null}
 g.onclick=e=>{const b=e.target.closest("button");if(b)show(+b.dataset.i)};
-lb.querySelector(".x").onclick=()=>lb.hidden=true;lb.querySelector(".pv").onclick=()=>show(cur-1);lb.querySelector(".nx").onclick=()=>show(cur+1);
-lb.onclick=e=>{if(e.target===lb)lb.hidden=true};
-document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")lb.hidden=true;if(e.key==="ArrowRight")show(cur+1);if(e.key==="ArrowLeft")show(cur-1)});
+lb.querySelector(".x").onclick=hide;lb.querySelector(".pv").onclick=()=>show(cur-1);lb.querySelector(".nx").onclick=()=>show(cur+1);
+lb.onclick=e=>{if(e.target===lb)hide()};
+document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")hide();if(e.key==="Tab"){const f=[...lb.querySelectorAll("button,a")];const i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}}if(e.key==="ArrowRight")show(cur+1);if(e.key==="ArrowLeft")show(cur-1)});
 let sx=null;lb.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});lb.addEventListener("touchend",e=>{if(sx==null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)show(cur+(d<0?1:-1));sx=null});
 draw();if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js");

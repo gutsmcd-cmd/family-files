@@ -1,19 +1,19 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Family Files</title><meta name="robots" content="noindex"><meta name="theme-color" content="#fdf4f7">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="style.css"></head><body>
-<header class="top"><div><h1 data-t="title"></h1><p data-t="sub"></p></div><button id="lang" class="pill">日本語</button></header>
-<nav class="jump"><a href="#film" data-t="j1"></a><a href="#pdf" data-t="j2"></a><a href="#photos" data-t="j3"></a></nav>
+<header class="top"><div><h1 data-t="title"></h1><p data-t="sub"></p></div><button id="lang" class="pill" lang="ja">日本語</button></header>
+<nav class="jump" aria-label="Sections"><a href="#film" data-t="j1"></a><a href="#pdf" data-t="j2"></a><a href="#photos" data-t="j3"></a></nav>
 <main>
 <section id="film" class="card"><span class="tag pink" data-t="forMasa"></span><h2 data-t="filmT"></h2><p data-t="filmP"></p>
-<video controls playsinline preload="metadata" poster="poster.jpg" src="Lawson100-for-Masa.mp4"></video>
+<video aria-label="Lawson 100 film" controls playsinline preload="metadata" poster="poster.jpg" src="Lawson100-for-Masa.mp4"></video>
 <a class="btn" href="Lawson100-for-Masa.mp4" download><span data-t="saveFilm"></span> <small>(7 MB)</small></a></section>
 <section id="pdf" class="card"><span class="tag green" data-t="forRie"></span><h2 data-t="pdfT"></h2><p data-t="pdfP"></p>
-<div class="pages"><img src="pdfpage-1.webp" alt="Page 1" loading="lazy"><img src="pdfpage-2.webp" alt="Page 2" loading="lazy"></div>
-<div class="row"><a class="btn" href="Koro-and-Mugi-for-Rie.pdf" download data-t="savePdf"></a><a class="btn ghost" href="Koro-and-Mugi-for-Rie.pdf" target="_blank" data-t="openPdf"></a></div></section>
+<div class="pages"><img src="pdfpage-1.webp" alt="Koro and Mugi booklet, page 1" loading="lazy"><img src="pdfpage-2.webp" alt="Koro and Mugi booklet, page 2" loading="lazy"></div>
+<div class="row"><a class="btn" href="Koro-and-Mugi-for-Rie.pdf" download data-t="savePdf"></a><a class="btn ghost" href="Koro-and-Mugi-for-Rie.pdf" target="_blank" rel="noopener" data-t="openPdf"></a></div></section>
 <section id="photos" class="card"><span class="tag pink" data-t="forMat"></span><h2 data-t="phT"></h2><p data-t="phP"></p>
 <a class="btn" href="mat-solo-reference-photos.zip" download><span data-t="saveZip"></span> <small>(38 MB)</small></a>
 <h3 data-t="oneByOne"></h3><div class="gallery" id="gal"></div></section>
 </main>
-<div id="lb" class="lb" hidden><button class="x" aria-label="Close">×</button><button class="pv" aria-label="Previous">‹</button><img alt=""><button class="nx" aria-label="Next">›</button><a class="btn dl" download></a></div>
+<div id="lb" class="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer"><button class="x" aria-label="Close">×</button><button class="pv" aria-label="Previous">‹</button><img alt=""><button class="nx" aria-label="Next">›</button><a class="btn dl" download></a></div>
 <footer data-t="foot"></footer>
 <script src="app.js"></script></body></html>
