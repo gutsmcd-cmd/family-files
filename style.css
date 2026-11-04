@@ -25,3 +25,5 @@ h3{font-size:1rem;margin:1.4em 0 .6em;color:var(--mut);font-weight:600}
 .pages a{flex:0 0 min(100%,420px);scroll-snap-align:start}.pages a img{width:100%}
 @media(max-width:500px){.lb .pv,.lb .nx{top:auto;bottom:20px;transform:none}.lb img{max-height:calc(100vh - 200px)}.jump a{padding:6px 10px}}
 footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
