@@ -11,7 +11,7 @@ main{max-width:900px;margin:auto;padding:6px 14px 30px}
 .tag{font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:99px}.tag.pink{background:var(--pinks);color:#a3264d}.tag.green{background:var(--greens);color:var(--green)}
 video{width:100%;border-radius:14px;background:#111;aspect-ratio:16/9}
 .btn{display:inline-block;margin:12px 8px 0 0;background:var(--green);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:99px}.btn.ghost{background:var(--pinks);color:#a3264d}
-.btn small{opacity:.8;font-weight:500}
+.btn small{opacity:.95;font-weight:500}
 .pages{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory}.pages img{flex:0 0 min(100%,420px);width:min(100%,420px);border:1px solid #eee;border-radius:10px;scroll-snap-align:start}
 h3{font-size:1rem;margin:1.4em 0 .6em;color:var(--mut);font-weight:600}
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}@media(max-width:500px){.gallery{grid-template-columns:repeat(2,1fr)}}
